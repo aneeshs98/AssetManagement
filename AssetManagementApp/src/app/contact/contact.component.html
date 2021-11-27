@@ -1,0 +1,145 @@
+<div class="container">
+    <div class="border">
+        <h3>Contact Here...</h3>
+        <hr>
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+            <!--Name-->
+            <div class="form-group">
+            <p>
+                <label for="firstName">First Name :</label>
+                <input type="text" id="firstName" name="firstName" formControlName="firstName"
+                class="form-control">
+            </p>
+        </div>
+
+        <div *ngIf="isSubmitted && formControls.firstName.errors">
+
+            <div *ngIf="formControls.firstName.errors.required"
+
+            style="color: red;text-align: left;">
+
+            First Name is required
+
+        </div>
+        
+
+        </div>
+
+        <div class="form-group">
+            <p>
+                <label for="lastName">Last Name :</label>
+                <input type="text" id="lastName" name="lastName" formControlName="lastName"
+                class="form-control">
+            </p>
+        </div>
+
+        <div *ngIf="isSubmitted && formControls.lastName.errors">
+            <div *ngIf=" formControls.lastName.errors.required" style="color: red;">
+                Last Name is required</div>
+        </div>
+
+        <!--Email-->
+
+        <div class="form-group">
+            <p>
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" formControlName="email"
+                class="form-control">
+            </p>
+        </div>
+        <div *ngIf="isSubmitted && formControls.email.errors">
+            <div *ngIf="formControls.email.errors.required" style="color: red;">
+               Email is required</div>
+        </div>
+        <!--Gender-->
+        <div class="form-group">
+            <p>
+                <label for="gender">Gender :</label>&nbsp;
+                <input type="radio" id="gender" name="gender" value="male" formControlName="gender"
+                class="form-check-input"> Male&nbsp;
+
+                <input type="radio" id="gender" name="gender" value="female"formControlName="gender"
+                class="form-check-input"> Female
+            </p>
+
+        </div>
+
+        <!--IsMarried-->
+        <div class="form-group">
+            <p>
+                <label for="isMarried">Is Married :</label>&nbsp;
+                <input type="checkbox" id="isMarried" name="isMarried" formControlName="isMarried"
+                class="form-check-input"> &nbsp;
+
+                
+            </p>
+        </div>
+        <!--Country-->
+        <div class="form-group">
+            <p>
+        <label for="country">Country :</label>
+        <select formControlName="country"  (change)="changeCountry($event)" class="form-control">
+            <option value="" disabled>Select Country</option>
+            
+            <option *ngFor="let con of countries">{{con}}</option>
+          </select>
+        </p>
+        </div>
+        <div *ngIf="isSubmitted && formControls.country.errors">
+
+            <div *ngIf=" formControls.country.errors.required" style="color: red;float: right;">
+
+                country is required</div>
+
+        </div>
+         
+        <!--Address-->
+        <div formGroupName="address">
+            <p><b>Address</b></p>
+
+            <div class="form-group">
+                <p>
+                    <label for="street">Street :</label>
+                    <input type="text" id="street" name="street" formControlName="street"
+                    class="form-control">
+                </p>
+            </div>
+
+
+           
+
+            <div class="form-group">
+                <p>
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" formControlName="city"
+                    class="form-control">
+                </p>
+            </div>
+
+           
+
+            <div class="form-group">
+                <p>
+                    <label for="zip">Pincode :</label>
+                    <input type="text" id="zip" name="zip" formControlName="zip"
+                    class="form-control">
+                </p>
+            </div>
+
+        
+          
+           
+        </div>
+           
+        <div class="form-group">
+            <p>
+                <button class="btn btn-primary">submit</button>
+            </p>
+        </div>
+
+        </form>
+    </div>
+</div>
+
+
+
